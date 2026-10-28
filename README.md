@@ -44,6 +44,5 @@ Le premier script écrit les pages françaises, le second les pages anglaises. E
 
 ## À compléter
 
-- PDF de la fiche technique (les boutons « Fiche technique » ne mènent encore nulle part)
 - Photos haute résolution de Marie-Pascale, Marika, Elinor et Rodrigo
 - Branchement du formulaire de contact (par exemple Formspree), actuellement en mode démonstration
