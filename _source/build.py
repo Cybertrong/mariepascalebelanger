@@ -3,7 +3,7 @@ import sys, re
 OUT = sys.argv[1]  # repo folder: writes index.html and presse.html
 
 # Adresse Formspree du formulaire de contact (ex. 'https://formspree.io/f/abcd1234'). Vide = mode démonstration.
-FORMSPREE = ''
+FORMSPREE = 'https://formspree.io/f/xrppaawp'
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=League+Gothic&display=swap">'
 
