@@ -499,8 +499,6 @@ def header(p, active):
       {chr(10).join('      '+l for l in lis).strip()}
     </ul>
     <ul class="side">
-      <li style="--i:8"><a href="presse.html">Dossier de presse</a></li>
-      <li style="--i:10"><a href="{L(p,'contact')}">Nous joindre</a></li>
       <li style="--i:11"><div class="lang" role="group" aria-label="Langue"><a href="#" aria-current="true" lang="fr">FR</a><span aria-hidden="true">/</span><a href="#" lang="en" title="English version coming soon">EN</a></div></li>
     </ul>
   </nav>
