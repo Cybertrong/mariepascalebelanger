@@ -518,7 +518,6 @@ def footer(p):
       <span>© 2026 Marie-Pascale Bélanger</span>
       <ul>
         <li><a href="cookies.html">Politique en matière de cookies</a></li>
-        <li><a href="#haut" id="top">Haut de page ↑</a></li>
       </ul>
     </div>
   </div>
@@ -592,7 +591,6 @@ closeB.addEventListener('click',function(){setMenu(false);burger.focus()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);burger.focus()}});
 nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
 document.querySelectorAll('a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});
-document.getElementById('top').addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
 '''
 
 INDEX_JS = '''var form=document.getElementById('form');
