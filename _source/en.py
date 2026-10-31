@@ -65,6 +65,7 @@ BLOCKS = [
 
 # 2) Text nodes (>text<) and attributes ----------------------------------------
 TEXT = [
+('Haut de page', 'Back to top'),
 ('Refuser', 'Decline'), ('Accepter', 'Accept'),
 ('Marie-Pascale Bélanger : théâtre visuel, danse et marionnette.', 'Marie-Pascale Bélanger: visual theatre, dance and puppetry.'),
 ('Ouvrir le menu', 'Open menu'), ('Fermer le menu', 'Close menu'), ('Menu principal', 'Main menu'), ('Langue', 'Language'),

@@ -377,6 +377,16 @@ header.site .bar :focus-visible{outline-color:var(--ink)}
 .cc #cc-yes:hover{filter:brightness(1.08)}
 @keyframes cc-in{from{opacity:0;transform:translateY(20px)}}
 @media (prefers-reduced-motion:reduce){.cc{animation:none}}
+/* Bouton « haut de page » flottant */
+.totop{position:fixed;z-index:44;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;text-decoration:none;box-shadow:0 0 0 2px var(--ink),0 6px 18px rgba(0,0,0,.25);opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1),bottom .3s}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop.show:hover{transform:translateY(-3px)}
+.totop svg{width:22px;height:22px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.totop:hover svg{animation:bob .55s ease-in-out infinite alternate}
+.totop:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@keyframes bob{to{transform:translateY(-3px)}}
+@media (max-width:520px){.totop{width:46px;height:46px}.cc:not([hidden]) ~ .totop{bottom:calc(200px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){.totop{transition:opacity .2s}.totop:hover svg{animation:none}}
 /* Tablette */
 @media (max-width:900px){
   .stag{display:flex;flex-direction:column;align-items:flex-start}
@@ -563,6 +573,14 @@ CONSENT_JS = r'''(function(){
   function set(x){try{localStorage.setItem(k,x)}catch(e){}window.mpbConsent=x;cc.hidden=true}
   document.getElementById('cc-yes').addEventListener('click',function(){set('yes')});
   document.getElementById('cc-no').addEventListener('click',function(){set('no')});
+})();
+'''
+
+TOTOP_JS = r'''(function(){
+  var b=document.getElementById('totop');if(!b)return;
+  function upd(){b.classList.toggle('show',window.scrollY>400)}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  b.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
 })();
 '''
 
@@ -977,8 +995,9 @@ def page(title, desc, body, js, p, active):
   <p>Ce site n’utilise aucun cookie publicitaire. Seule la vidéo YouTube peut en déposer, si vous la lancez. <a href="cookies.html">En savoir plus</a></p>
   <div class="cc-btns"><button type="button" id="cc-no">Refuser</button><button type="button" id="cc-yes">Accepter</button></div>
 </div>
+<a class="totop" id="totop" href="#haut" aria-label="Haut de page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
 <script>
-{CONSENT_JS}{MENU_JS}{js}{PARALLAX_JS}</script>
+{CONSENT_JS}{MENU_JS}{js}{PARALLAX_JS}{TOTOP_JS}</script>
 </body>
 </html>
 '''
