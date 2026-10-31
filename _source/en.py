@@ -65,6 +65,7 @@ BLOCKS = [
 
 # 2) Text nodes (>text<) and attributes ----------------------------------------
 TEXT = [
+('Préférences cookies', 'Cookie preferences'),
 ('Haut de page', 'Back to top'),
 ('Refuser', 'Decline'), ('Accepter', 'Accept'),
 ('Marie-Pascale Bélanger : théâtre visuel, danse et marionnette.', 'Marie-Pascale Bélanger: visual theatre, dance and puppetry.'),
