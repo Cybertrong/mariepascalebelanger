@@ -4,6 +4,16 @@ D = sys.argv[1]  # repo folder containing index.html, presse.html, cookies.html 
 
 # 1) Whole blocks (exact HTML) -------------------------------------------------
 BLOCKS = [
+('<p>« On assiste à un surprenant florilège d’idées toutes plus extravagantes les unes que les autres, grâce à ce 11e art magique qu’est celui des marionnettes. »<br><strong>Sophie Jama</strong>, Pieuvre, Montréal</p>',
+ '<p>“We witness a surprising array of ideas, each more extravagant than the last, thanks to that magical eleventh art: puppetry.”<br><strong>Sophie Jama</strong>, Pieuvre, Montreal (translated from French)</p>'),
+('<blockquote class="big">« On est épaté par les trouvailles qui toutes suscitent le rire. »</blockquote>',
+ '<blockquote class="big">“We are amazed by the inventions, every one of which draws laughter.”</blockquote>'),
+('<blockquote>« D’un protagoniste morcelé qui a du mal à rassembler tous les morceaux de son corps à sa multiplication, en passant par son accouchement de lui-même en miniature, on est épaté par les trouvailles qui toutes suscitent le rire. »</blockquote>',
+ '<blockquote>“From a fragmented protagonist struggling to gather all the pieces of his body, to his multiplication, by way of giving birth to a miniature version of himself, we are amazed by the inventions, every one of which draws laughter.”</blockquote>'),
+('<blockquote>« On assiste à un surprenant florilège d’idées toutes plus extravagantes les unes que les autres, grâce à ce 11e art magique qu’est celui des marionnettes. (…) »</blockquote>',
+ '<blockquote>“We witness a surprising array of ideas, each more extravagant than the last, thanks to that magical eleventh art: puppetry. (…)”</blockquote>'),
+('<p class="meta">Pieuvre · Montréal</p>',
+ '<p class="meta">Pieuvre · Montreal</p><p class="tr-note">Quotes translated from French</p>'),
 ('<blockquote class="big">« J’ai été soufflé par le savoir-faire de cette production. »</blockquote>',
  '<blockquote lang="en" class="big">“I was blown away by the craftsmanship of the production.”</blockquote>'),
 ('<blockquote>« J’ai aimé voir une production qui semblait si parfaitement onirique alors que j’étais bien éveillé. »</blockquote>',
@@ -53,9 +63,6 @@ BLOCKS = [
 # Presse page
 ('''<strong>« Coup de cœur du Jury Jeunes » Grand Est</strong><span>Festival mondial des théâtres de marionnettes · Charleville-Mézières, France · 2025</span>''',
  '''<strong>“Coup de cœur du Jury Jeunes” Grand Est</strong><span>Youth Jury Favourite · World Puppet Theatre Festival · Charleville-Mézières, France · 2025</span>'''),
-('''<div class="quote-list">
-        <blockquote class="big">''', '''<div class="quote-list" lang="fr">
-        <blockquote class="big">'''),
 ('''Pour recevoir des photos de presse en haute résolution, <a href="index.html#contact">écrivez-nous</a>.''',
  '''To receive high-resolution press photos, <a href="index.html#contact">write to us</a>.'''),
 # Cookies page
