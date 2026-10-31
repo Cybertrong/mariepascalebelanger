@@ -4,6 +4,10 @@ D = sys.argv[1]  # repo folder containing index.html, presse.html, cookies.html 
 
 # 1) Whole blocks (exact HTML) -------------------------------------------------
 BLOCKS = [
+('''<p>Ce site n’utilise aucun cookie publicitaire. Seule la vidéo YouTube peut en déposer, si vous la lancez. <a href="cookies.html">En savoir plus</a></p>''',
+ '''<p>This site uses no advertising cookies. Only the YouTube video may set some, if you play it. <a href="cookies.html">Learn more</a></p>'''),
+('''<p>Le bandeau affiché en bas de l’écran lors de votre première visite vous permet d’accepter ou de refuser la vidéo intégrée. Si vous refusez, la vidéo s’ouvre directement sur YouTube, dans un nouvel onglet. Votre choix est enregistré uniquement dans votre navigateur ; pour le modifier, effacez les données de ce site dans les réglages de votre navigateur.</p>''',
+ '''<p>The banner shown at the bottom of the screen on your first visit lets you accept or refuse the embedded video. If you refuse, the video opens directly on YouTube in a new tab. Your choice is stored only in your browser; to change it, clear this site’s data in your browser settings.</p>'''),
 ('''<p>Les messages envoyés par le formulaire de contact transitent par le service <strong>Formspree</strong>, qui nous les transmet par courriel.</p>''',
  '''<p>Messages sent through the contact form go through the <strong>Formspree</strong> service, which forwards them to us by email.</p>'''),
 # About heading (staircase)
@@ -61,6 +65,7 @@ BLOCKS = [
 
 # 2) Text nodes (>text<) and attributes ----------------------------------------
 TEXT = [
+('Refuser', 'Decline'), ('Accepter', 'Accept'),
 ('Marie-Pascale Bélanger : théâtre visuel, danse et marionnette.', 'Marie-Pascale Bélanger: visual theatre, dance and puppetry.'),
 ('Ouvrir le menu', 'Open menu'), ('Fermer le menu', 'Close menu'), ('Menu principal', 'Main menu'), ('Langue', 'Language'),
 ('Dossier de presse · Marie-Pascale Bélanger', 'Press kit · Marie-Pascale Bélanger'),

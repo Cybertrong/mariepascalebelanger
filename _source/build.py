@@ -361,6 +361,22 @@ header.site .bar :focus-visible{outline-color:var(--ink)}
 @keyframes rise{to{transform:none}}
 @keyframes glow{0%,100%{text-shadow:0 0 0 rgba(255,246,201,0)}45%{text-shadow:0 0 28px rgba(255,246,201,.9),0 0 2px rgba(255,255,255,.8)}}
 @media (prefers-reduced-motion:reduce){.hero>img,.hero h1 .pre{animation:none}.hero h1 .ch{animation:none;transform:none}}
+/* Parallaxe : les photos et le grand titre défilent plus lentement que la page */
+.px-img{scale:1.2;will-change:translate}
+.band-img,.split .photo{overflow:hidden}
+.px-txt{will-change:translate,opacity}
+/* Bandeau cookies discret */
+.cc{position:fixed;z-index:45;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100% - 32px));background:var(--bar);color:var(--bar-ink);padding:14px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;font-size:13px;line-height:1.5;font-weight:400;box-shadow:0 10px 30px rgba(0,0,0,.28);animation:cc-in .6s 1.2s cubic-bezier(.16,1,.3,1) both}
+.cc p{margin:0;flex:1 1 230px}
+.cc a{color:inherit;text-underline-offset:3px}
+.cc a:hover{color:var(--yellow)}
+.cc-btns{display:flex;gap:8px;margin-left:auto}
+.cc button{font:inherit;font-family:var(--heavy);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;cursor:pointer;background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35)}
+.cc button:hover{border-color:var(--bar-ink)}
+.cc #cc-yes{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.cc #cc-yes:hover{filter:brightness(1.08)}
+@keyframes cc-in{from{opacity:0;transform:translateY(20px)}}
+@media (prefers-reduced-motion:reduce){.cc{animation:none}}
 /* Tablette */
 @media (max-width:900px){
   .stag{display:flex;flex-direction:column;align-items:flex-start}
@@ -511,6 +527,45 @@ REVEAL_JS = r'''(function(){
 })();
 '''
 
+PARALLAX_JS = r'''(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var items=[];
+  function add(sel,speed,cls,fade){document.querySelectorAll(sel).forEach(function(el){el.classList.add(cls);items.push({el:el,host:el.closest('section')||el.parentElement,speed:speed,fade:fade})})}
+  add('.hero>img',0.18,'px-img');
+  add('.pagehead>img',0.16,'px-img');
+  add('.band-img img',0.12,'px-img');
+  add('.split .photo img',0.12,'px-img');
+  add('#h-home',0.35,'px-txt',true);
+  add('.pagehead .stack',0.25,'px-txt',true);
+  var ticking=false;
+  function tick(){
+    ticking=false;var vh=window.innerHeight;
+    items.forEach(function(it){
+      var r=it.host.getBoundingClientRect();
+      if(!r.height||r.bottom<-200||r.top>vh+200)return;
+      var c=r.top+r.height/2-vh/2;
+      it.el.style.translate='0 '+(-c*it.speed).toFixed(1)+'px';
+      if(it.fade){var p=Math.max(0,-r.top)/r.height;it.el.style.opacity=Math.max(0,1-p*1.4).toFixed(3)}
+    });
+  }
+  function req(){if(!ticking){ticking=true;requestAnimationFrame(tick)}}
+  window.addEventListener('scroll',req,{passive:true});
+  window.addEventListener('resize',req);
+  window.addEventListener('hashchange',function(){setTimeout(req,60)});
+  req();
+})();
+'''
+
+CONSENT_JS = r'''(function(){
+  var k='mpb-consent',v=null;try{v=localStorage.getItem(k)}catch(e){}
+  window.mpbConsent=v;var cc=document.getElementById('cc');if(!cc)return;
+  if(!v)cc.hidden=false;
+  function set(x){try{localStorage.setItem(k,x)}catch(e){}window.mpbConsent=x;cc.hidden=true}
+  document.getElementById('cc-yes').addEventListener('click',function(){set('yes')});
+  document.getElementById('cc-no').addEventListener('click',function(){set('no')});
+})();
+'''
+
 MENU_JS = '''var nav=document.getElementById('nav'),burger=document.getElementById('burger'),closeB=document.getElementById('close');
 function setMenu(o){nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';if(o)closeB.focus();}
 burger.addEventListener('click',function(){setMenu(true)});
@@ -535,6 +590,7 @@ if(form)form.addEventListener('submit',function(e){
 });
 var vid=document.getElementById('video');
 if(vid)vid.addEventListener('click',function(e){
+  if(window.mpbConsent==='no')return;
   e.preventDefault();
   var box=document.createElement('div');box.className='video';
   var f=document.createElement('iframe');
@@ -889,6 +945,8 @@ COOKIES_BODY = f'''
       <h2>Comment contrôler les cookies</h2>
       <p>Vous pouvez à tout moment accepter, bloquer ou supprimer les cookies dans les réglages de votre navigateur (Chrome, Safari, Firefox, Edge, etc.). Le blocage des cookies n’empêche pas la consultation de ce site ; seule la lecture de la vidéo pourrait en être affectée.</p>
 
+      <p>Le bandeau affiché en bas de l’écran lors de votre première visite vous permet d’accepter ou de refuser la vidéo intégrée. Si vous refusez, la vidéo s’ouvre directement sur YouTube, dans un nouvel onglet. Votre choix est enregistré uniquement dans votre navigateur ; pour le modifier, effacez les données de ce site dans les réglages de votre navigateur.</p>
+
       <h2>Vos renseignements personnels</h2>
       <p>Les messages envoyés par le formulaire de contact transitent par le service <strong>Formspree</strong>, qui nous les transmet par courriel.</p>
       <p>Les renseignements transmis par le formulaire de contact servent uniquement à répondre à votre message. Ils ne sont ni vendus ni partagés à des fins commerciales. Conformément aux lois applicables en matière de protection des renseignements personnels, notamment au Québec, vous pouvez demander à consulter, à corriger ou à supprimer les renseignements vous concernant en nous écrivant par la <a href="index.html#contact">page Contact</a>.</p>
@@ -915,8 +973,12 @@ def page(title, desc, body, js, p, active):
 {header(p, active)}
 {body}
 {footer(p)}
+<div class="cc" id="cc" role="region" aria-label="Cookies" hidden>
+  <p>Ce site n’utilise aucun cookie publicitaire. Seule la vidéo YouTube peut en déposer, si vous la lancez. <a href="cookies.html">En savoir plus</a></p>
+  <div class="cc-btns"><button type="button" id="cc-no">Refuser</button><button type="button" id="cc-yes">Accepter</button></div>
+</div>
 <script>
-{MENU_JS}{js}</script>
+{CONSENT_JS}{MENU_JS}{js}{PARALLAX_JS}</script>
 </body>
 </html>
 '''
