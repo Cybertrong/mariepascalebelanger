@@ -4,6 +4,18 @@ D = sys.argv[1]  # repo folder containing index.html, presse.html, cookies.html 
 
 # 1) Whole blocks (exact HTML) -------------------------------------------------
 BLOCKS = [
+('<blockquote class="big">« J’ai été soufflé par le savoir-faire de cette production. »</blockquote>',
+ '<blockquote lang="en" class="big">“I was blown away by the craftsmanship of the production.”</blockquote>'),
+('<blockquote>« J’ai aimé voir une production qui semblait si parfaitement onirique alors que j’étais bien éveillé. »</blockquote>',
+ '<blockquote lang="en">“I enjoyed seeing a production that seemed so convincingly dreamlike while I was actually awake.”</blockquote>'),
+('<blockquote>« Ce spectacle onirique, plein d’esprit et d’ingéniosité, semblait sans cesse chercher à nous surprendre et à nous rappeler que nous sommes dans un monde de fantaisie. »</blockquote>',
+ '<blockquote lang="en">“The dream-like performance, full of wit and ingenuity, seemed to be constantly looking for ways to surprise us and remind us that we are in a world of fantasy.”</blockquote>'),
+('<blockquote>« Un spectacle dans lequel les marionnettistes brouillent habilement les frontières entre le corps humain et la marionnette. »</blockquote>',
+ '<blockquote lang="en">“A spectacle in which puppeteers skillfully blurred the boundaries between the human body and the puppet.”</blockquote>'),
+('<p class="tr-note">Citations traduites de l’anglais</p>',
+ ''),
+('<p>« Un spectacle dans lequel les marionnettistes brouillent habilement les frontières entre le corps humain et la marionnette. »<br><strong>Petr Broulík</strong>, magazine Patriot, Ostrava (traduit de l’anglais)</p>',
+ '<p lang="en"><i>“A spectacle in which puppeteers skillfully blurred the boundaries between the human body and the puppet.”</i><br><strong>Petr Broulík</strong>, Patriot magazine, Ostrava</p>'),
 ('''<p>Ce site n’utilise aucun cookie publicitaire. Seule la vidéo YouTube peut en déposer, si vous la lancez. <a href="cookies.html">En savoir plus</a></p>''',
  '''<p>This site uses no advertising cookies. Only the YouTube video may set some, if you play it. <a href="cookies.html">Learn more</a></p>'''),
 ('''<p>Le bandeau affiché en bas de l’écran lors de votre première visite vous permet d’accepter ou de refuser la vidéo intégrée. Si vous refusez, la vidéo s’ouvre directement sur YouTube, dans un nouvel onglet. Votre choix est enregistré uniquement dans votre navigateur ; pour le modifier, effacez les données de ce site dans les réglages de votre navigateur.</p>''',
@@ -25,7 +37,6 @@ BLOCKS = [
  '''<p><strong>“Coup de cœur du Jury Jeunes” Grand Est</strong> (Youth Jury Favourite), World Puppet Theatre Festival, Charleville-Mézières, France, 2025.</p>'''),
 ('''<p>« On assiste à un surprenant florilège d’idées''', '''<p lang="fr">« On assiste à un surprenant florilège d’idées'''),
 ('''<br><strong>Sophie Jama</strong>, Pieuvre, Montréal</p>''', '''<br><strong>Sophie Jama</strong>, Pieuvre, Montreal</p>'''),
-('''<br><strong>Petr Broulík</strong>, magazine Patriot, Ostrava</p>''', '''<br><strong>Petr Broulík</strong>, Patriot magazine, Ostrava</p>'''),
 ('''<p class="center-text"><strong>Artiste multidisciplinaire</strong>, Marie-Pascale Bélanger est diplômée en <strong>arts visuels</strong> et en <strong>interprétation en danse</strong> de l’<strong>École de danse contemporaine de Montréal</strong> (EDCM). Elle détient une <strong>maîtrise en danse</strong> de l’UQAM, axée sur l’intégration de l’image dans l’espace scénique, ainsi qu’un <strong>diplôme d’études supérieures en théâtre de marionnettes contemporain</strong> (UQAM, 2019). Son parcours l’a menée à créer des œuvres chorégraphiques diffusées au <strong>Canada</strong>, aux <strong>États-Unis</strong> et en <strong>Europe</strong>.</p>''',
  '''<p class="center-text">A <strong>multidisciplinary artist</strong>, Marie-Pascale Bélanger holds degrees in <strong>visual arts</strong> and in <strong>dance performance</strong> from the <strong>École de danse contemporaine de Montréal</strong> (EDCM). She holds a <strong>master’s degree in dance</strong> from UQAM, focused on integrating images into the stage space, as well as a <strong>graduate diploma in contemporary puppet theatre</strong> (UQAM, 2019). Her career has led her to create choreographic works presented in <strong>Canada</strong>, the <strong>United States</strong> and <strong>Europe</strong>.</p>'''),
 ('''Sa démarche s’inscrit dans une recherche interdisciplinaire où se croisent la <strong>danse</strong>, les <strong>arts visuels</strong> et les <strong>arts de la marionnette</strong>. Développant une esthétique visuelle nourrie par la <strong>bande dessinée</strong> et le <strong>surréalisme</strong>, elle explore des dispositifs scéniques où les frontières entre le réel et le fantastique s’estompent. Animée par une soif de matière et de transformation, elle conçoit et fabrique ses <strong>scénographies</strong> et ses <strong>marionnettes</strong>, qu’elle considère comme des agents dramaturgiques à part entière. Chaque objet scénique participe ainsi à une écriture visuelle et corporelle qui met en tension le corps, l’objet et l’image, et modifie la perception, invitant le public à une expérience sensible où les repères se déplacent et se recomposent.''',
@@ -65,6 +76,11 @@ BLOCKS = [
 
 # 2) Text nodes (>text<) and attributes ----------------------------------------
 TEXT = [
+('Marie-Pascale Bélanger | Théâtre visuel et marionnettes à Montréal', 'Marie-Pascale Bélanger | Visual and puppet theatre in Montreal'),
+('Marie-Pascale Bélanger, artiste multidisciplinaire de Montréal : théâtre visuel, danse et marionnette contemporaine. Découvrez A comme Animal, spectacle tout public dès 10 ans, en tournée au Québec et en Europe.', 'Marie-Pascale Bélanger, Montreal multidisciplinary artist: visual theatre, dance and contemporary puppetry. Discover A comme Animal, a show for all audiences aged 10 and up, touring Quebec and Europe.'),
+('Dossier de presse · A comme Animal | Marie-Pascale Bélanger', 'Press kit · A comme Animal | Marie-Pascale Bélanger'),
+('Critiques, prix et entretien autour d’A comme Animal, spectacle de marionnettes de Marie-Pascale Bélanger, Coup de cœur du Jury Jeunes au Festival mondial des théâtres de marionnettes 2025.', 'Reviews, award and interview about A comme Animal, a puppet theatre show by Marie-Pascale Bélanger, Youth Jury Favourite at the 2025 World Puppet Theatre Festival.'),
+('A comme Animal, Marie-Pascale Bélanger', 'A comme Animal, Marie-Pascale Bélanger'),
 ('Préférences cookies', 'Cookie preferences'),
 ('Haut de page', 'Back to top'),
 ('Refuser', 'Decline'), ('Accepter', 'Accept'),
@@ -194,6 +210,13 @@ for fr_name, en_name in PAGES.items():
                 en = re.sub(r'>(\s*)' + re.escape(a) + r'(\s*)<', lambda mm: '>' + mm.group(1) + b + mm.group(2) + '<', en); n += 1
     for a, b in JS:
         en = en.replace(a, b)
+
+    # SEO: canonical / og:url / locale for the English page
+    _fr = {'index.html': '', 'presse.html': 'presse.html', 'cookies.html': 'cookies.html'}[fr_name]
+    _S = 'https://mariepascalebelanger.com/'
+    en = en.replace(f'<link rel="canonical" href="{_S}{_fr}">', f'<link rel="canonical" href="{_S}{en_name}">')
+    en = en.replace(f'<meta property="og:url" content="{_S}{_fr}">', f'<meta property="og:url" content="{_S}{en_name}">')
+    en = en.replace('<meta property="og:locale" content="fr_CA">\n<meta property="og:locale:alternate" content="en_CA">', '<meta property="og:locale" content="en_CA">\n<meta property="og:locale:alternate" content="fr_CA">')
     # page language and links
     en = en.replace('<html lang="fr">', '<html lang="en">', 1)
     en = en.replace('href="presse.html"', 'href="press.html"').replace('href="cookies.html"', 'href="cookies-en.html"')

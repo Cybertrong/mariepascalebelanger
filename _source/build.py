@@ -390,6 +390,7 @@ header.site .bar :focus-visible{outline-color:var(--ink)}
 @keyframes bob{to{transform:translateY(-3px)}}
 @media (max-width:520px){.totop{width:46px;height:46px}.cc:not([hidden]) ~ .totop{bottom:calc(200px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.totop{transition:opacity .2s}.totop:hover svg{animation:none}}
+.tr-note{margin:0;font-size:13px;font-style:italic;color:var(--muted)}
 /* Tablette */
 @media (max-width:900px){
   .stag{display:flex;flex-direction:column;align-items:flex-start}
@@ -651,7 +652,7 @@ D2023 = [li_date('2 – 3 février 2023', AC, 'Maison internationale des arts de
          li_date('3 juin 2023', AC, 'Festival Masqu’alors! (Saint-Camille, QC)', 'https://masqalors.ca/en/festival/edition/2023/a-comme-animal-a-as-animal/'),
          li_date('26 – 27 juillet 2023', AC, 'Festival international des arts de la marionnette à Saguenay (Saguenay, QC)', 'https://www.fiams.com/en/programmation/a-comme-animal/')]
 
-N2026 = [li_date('29 octobre 2026 · 19 h', AC, 'Centre culturel et communautaire Henri-Lemieux, Théâtre du Grand Sault (Montréal, QC)', 'https://montreal.ca/evenements/comme-animal-projets-de-lombre-109275')]
+D2026 = [li_date('29 octobre 2026 · 19 h', AC, 'Centre culturel et communautaire Henri-Lemieux, Théâtre du Grand Sault (Montréal, QC)', 'https://montreal.ca/evenements/comme-animal-projets-de-lombre-109275')]
 N2027 = [li_date('29 janvier 2027 · 19 h 30', AC, 'Maison de la culture Janine-Sutto (Montréal, QC)', 'https://montreal.ca/evenements/comme-animal-projets-de-lombre-110117'),
          li_date('4 mars 2027 · 19 h 30', AC, 'Maison de la culture Claude-Léveillée (Montréal, QC)', 'https://montreal.ca/evenements/comme-animal-projets-de-lombre-120842')]
 
@@ -706,7 +707,6 @@ INDEX_BODY = f'''
   <div class="titleband" style="margin-top:0"><h2>Nos prochaines dates :</h2></div>
   <section class="wrap" aria-label="Prochaines dates">
     <div class="dates">
-      {ybox('2026', N2026)}
       {ybox('2027', N2027)}
     </div>
     <div class="centerbtn" style="margin-top:50px"><a class="more" href="#calendrier">Toutes les dates</a></div>
@@ -758,7 +758,7 @@ INDEX_BODY = f'''
       <div style="display:flex;flex-direction:column;gap:28px;font-size:19px;font-weight:400">
         <p><strong>« Coup de cœur du Jury Jeunes » Grand Est</strong>, Festival mondial des théâtres de marionnettes de Charleville-Mézières, France, 2025.</p>
         <p>« On assiste à un surprenant florilège d’idées toutes plus extravagantes les unes que les autres, grâce à ce 11e art magique qu’est celui des marionnettes. »<br><strong>Sophie Jama</strong>, Pieuvre, Montréal</p>
-        <p lang="en"><i>“A spectacle in which puppeteers skillfully blurred the boundaries between the human body and the puppet.”</i><br><strong>Petr Broulík</strong>, magazine Patriot, Ostrava</p>
+        <p>« Un spectacle dans lequel les marionnettistes brouillent habilement les frontières entre le corps humain et la marionnette. »<br><strong>Petr Broulík</strong>, magazine Patriot, Ostrava (traduit de l’anglais)</p>
         <p><a class="more" href="{JEU}" target="_blank" rel="noopener">Lire l’entretien de la Revue JEU</a></p>
       </div>
     </div>
@@ -833,13 +833,13 @@ INDEX_BODY = f'''
   <div class="titleband" style="margin-top:0"><h2>Prochaines dates :</h2></div>
   <section class="wrap" aria-label="Prochaines dates">
     <div class="dates">
-      {ybox('2026', N2026)}
       {ybox('2027', N2027)}
     </div>
   </section>
   <div class="titleband" style="margin-top:0"><h2>Dates passées :</h2></div>
   <section class="wrap endpad" aria-label="Dates passées">
     <div class="dates">
+      {ybox('2026', D2026)}
       {ybox('2025', D2025)}
       {ybox('2024', D2024)}
       {ybox('2023', D2023)}
@@ -909,13 +909,13 @@ PRESSE_BODY = f'''
   </section>
 
   <section class="split" aria-label="Critique de Petr Broulík">
-    <div class="pad critic first-mobile"><h2 class="bigword">Petr<br>Broulík</h2><p class="meta">Magazine Patriot · Ostrava · 4 octobre 2025</p></div>
+    <div class="pad critic first-mobile"><h2 class="bigword">Petr<br>Broulík</h2><p class="meta">Magazine Patriot · Ostrava · 4 octobre 2025</p><p class="tr-note">Citations traduites de l’anglais</p></div>
     <div class="pad y">
       <div class="quote-list">
-        <blockquote lang="en" class="big">“I was blown away by the craftsmanship of the production.”</blockquote>
-        <blockquote lang="en">“I enjoyed seeing a production that seemed so convincingly dreamlike while I was actually awake.”</blockquote>
-        <blockquote lang="en">“The dream-like performance, full of wit and ingenuity, seemed to be constantly looking for ways to surprise us and remind us that we are in a world of fantasy.”</blockquote>
-        <blockquote lang="en">“A spectacle in which puppeteers skillfully blurred the boundaries between the human body and the puppet.”</blockquote>
+        <blockquote class="big">« J’ai été soufflé par le savoir-faire de cette production. »</blockquote>
+        <blockquote>« J’ai aimé voir une production qui semblait si parfaitement onirique alors que j’étais bien éveillé. »</blockquote>
+        <blockquote>« Ce spectacle onirique, plein d’esprit et d’ingéniosité, semblait sans cesse chercher à nous surprendre et à nous rappeler que nous sommes dans un monde de fantaisie. »</blockquote>
+        <blockquote>« Un spectacle dans lequel les marionnettistes brouillent habilement les frontières entre le corps humain et la marionnette. »</blockquote>
       </div>
     </div>
   </section>
@@ -980,7 +980,44 @@ COOKIES_BODY = f'''
 </main>
 '''
 
-def page(title, desc, body, js, p, active):
+
+SITE = 'https://mariepascalebelanger.com/'
+EN_OF = {'': 'en.html', 'presse.html': 'press.html', 'cookies.html': 'cookies-en.html'}
+
+def seo_head(path, title, desc, noindex=False):
+    en = EN_OF[path]
+    rob = '<meta name="robots" content="noindex, follow">\n' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large">\n'
+    return f"""{rob}<link rel="canonical" href="{SITE}{path}">
+<link rel="alternate" hreflang="fr" href="{SITE}{path}">
+<link rel="alternate" hreflang="en" href="{SITE}{en}">
+<link rel="alternate" hreflang="x-default" href="{SITE}{path}">
+<meta name="author" content="Marie-Pascale Bélanger">
+<meta name="theme-color" content="#f3ca20">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marie-Pascale Bélanger">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="en_CA">
+<meta property="og:url" content="{SITE}{path}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{SITE}images/a-comme-animal-cage.jpg">
+<meta property="og:image:alt" content="A comme Animal, Marie-Pascale Bélanger">
+<meta name="twitter:card" content="summary_large_image">
+"""
+
+JSONLD = """<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://mariepascalebelanger.com/#site","url":"https://mariepascalebelanger.com/","name":"Marie-Pascale Bélanger","inLanguage":["fr-CA","en-CA"]},
+{"@type":"Person","@id":"https://mariepascalebelanger.com/#marie-pascale-belanger","name":"Marie-Pascale Bélanger","url":"https://mariepascalebelanger.com/","image":"https://mariepascalebelanger.com/images/marie-pascale-belanger.jpg","jobTitle":"Artiste multidisciplinaire, metteuse en scène, chorégraphe, scénographe et marionnettiste","homeLocation":{"@type":"Place","name":"Montréal, Québec, Canada"},"alumniOf":[{"@type":"EducationalOrganization","name":"École de danse contemporaine de Montréal"},{"@type":"CollegeOrUniversity","name":"Université du Québec à Montréal"}],"knowsAbout":["théâtre de marionnettes","marionnette contemporaine","théâtre visuel","danse contemporaine","scénographie","puppetry","visual theatre"],"award":"Coup de cœur du Jury Jeunes Grand Est, Festival mondial des théâtres de marionnettes de Charleville-Mézières (2025)"},
+{"@type":"CreativeWork","@id":"https://mariepascalebelanger.com/#a-comme-animal","name":"A comme Animal","alternateName":"A as Animal","genre":["Théâtre visuel","Théâtre de marionnettes","Danse"],"creator":{"@id":"https://mariepascalebelanger.com/#marie-pascale-belanger"},"inLanguage":["fr","en"],"typicalAgeRange":"10-","timeRequired":"PT55M","image":"https://mariepascalebelanger.com/images/a-comme-animal-scene.jpg","description":"Un vieux philosophe croque dans une pomme et s’endort, happé vers un rêve où tout est possible. Théâtre visuel pour tous, dès 10 ans."},
+{"@type":"TheaterEvent","name":"A comme Animal","startDate":"2027-01-29T19:30:00-05:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Maison de la culture Janine-Sutto","address":{"@type":"PostalAddress","addressLocality":"Montréal","addressRegion":"QC","addressCountry":"CA"}},"performer":{"@id":"https://mariepascalebelanger.com/#marie-pascale-belanger"},"organizer":{"@type":"Organization","name":"Ville de Montréal","url":"https://montreal.ca/"},"workPerformed":{"@id":"https://mariepascalebelanger.com/#a-comme-animal"},"image":"https://mariepascalebelanger.com/images/a-comme-animal-cage.jpg","url":"https://montreal.ca/evenements/comme-animal-projets-de-lombre-110117"},
+{"@type":"TheaterEvent","name":"A comme Animal","startDate":"2027-03-04T19:30:00-05:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Maison de la culture Claude-Léveillée","address":{"@type":"PostalAddress","addressLocality":"Montréal","addressRegion":"QC","addressCountry":"CA"}},"performer":{"@id":"https://mariepascalebelanger.com/#marie-pascale-belanger"},"organizer":{"@type":"Organization","name":"Ville de Montréal","url":"https://montreal.ca/"},"workPerformed":{"@id":"https://mariepascalebelanger.com/#a-comme-animal"},"image":"https://mariepascalebelanger.com/images/a-comme-animal-cage.jpg","url":"https://montreal.ca/evenements/comme-animal-projets-de-lombre-120842"}
+]}
+</script>
+"""
+
+def page(title, desc, body, js, p, active, path='', noindex=False, ld=''):
     return f'''<!doctype html>
 <html lang="fr">
 <head>
@@ -988,7 +1025,7 @@ def page(title, desc, body, js, p, active):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-{FONTS}
+{seo_head(path, title, desc, noindex)}{ld}{FONTS}
 <style>{CSS}</style>
 </head>
 <body>
@@ -1006,10 +1043,10 @@ def page(title, desc, body, js, p, active):
 </html>
 '''
 
-idx = page("Marie-Pascale Bélanger", 'Marie-Pascale Bélanger : théâtre visuel, danse et marionnette.', INDEX_BODY, INDEX_JS, '', 'accueil')
-pr = page("Dossier de presse · Marie-Pascale Bélanger", 'Dossier de presse d’A comme Animal : prix, critiques et entretien.', PRESSE_BODY, '', 'index.html', 'presse')
+idx = page("Marie-Pascale Bélanger | Théâtre visuel et marionnettes à Montréal", 'Marie-Pascale Bélanger, artiste multidisciplinaire de Montréal : théâtre visuel, danse et marionnette contemporaine. Découvrez A comme Animal, spectacle tout public dès 10 ans, en tournée au Québec et en Europe.', INDEX_BODY, INDEX_JS, '', 'accueil', path='', ld=JSONLD)
+pr = page("Dossier de presse · A comme Animal | Marie-Pascale Bélanger", 'Critiques, prix et entretien autour d’A comme Animal, spectacle de marionnettes de Marie-Pascale Bélanger, Coup de cœur du Jury Jeunes au Festival mondial des théâtres de marionnettes 2025.', PRESSE_BODY, '', 'index.html', 'presse', path='presse.html')
 open(OUT + '/index.html', 'w').write(idx)
 open(OUT + '/presse.html', 'w').write(pr)
-ck = page("Politique en matière de cookies · Marie-Pascale Bélanger", 'Politique en matière de cookies du site de Marie-Pascale Bélanger.', COOKIES_BODY, '', 'index.html', 'cookies')
+ck = page("Politique en matière de cookies · Marie-Pascale Bélanger", 'Politique en matière de cookies du site de Marie-Pascale Bélanger.', COOKIES_BODY, '', 'index.html', 'cookies', path='cookies.html', noindex=True)
 open(OUT + '/cookies.html', 'w').write(ck)
 print(len(idx), len(pr))
