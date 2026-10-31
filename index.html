@@ -366,6 +366,7 @@ header.site .bar :focus-visible{outline-color:var(--ink)}
 .band-img,.split .photo{overflow:hidden}
 .px-txt{will-change:translate,opacity}
 /* Bandeau cookies discret */
+[hidden]{display:none!important}
 .cc{position:fixed;z-index:45;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100% - 32px));background:var(--bar);color:var(--bar-ink);padding:14px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;font-size:13px;line-height:1.5;font-weight:400;box-shadow:0 10px 30px rgba(0,0,0,.28);animation:cc-in .6s 1.2s cubic-bezier(.16,1,.3,1) both}
 .cc p{margin:0;flex:1 1 230px}
 .cc a{color:inherit;text-underline-offset:3px}
